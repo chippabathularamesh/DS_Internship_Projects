@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devise-width, initial-scale=1.0">
+    <title>Regex Maching Web App</title>
+</head>
+<body>
+    <h1>Regex Maching Web App</h1>
+
+    <form action="/results" method="POST">
+        <label for="test_string">Test_String:</label>
+        <input type="text" name="test_string" id="test_string" required><br><br>
+
+        <label for="pattern">Regex Pattern:</label>
+        <input type="text" name="pattern" id="pattern"required><br><br>
+
+        <button type="submit">Find Matches</button>
+    </form>
+
+    {% if Matches %}
+    <h3>Matches Found:</h3>
+    <ul>
+        {% for match in matches %}
+        <li>{{ match }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h2>Email validation</h2>
+    <form action="/validate_email" method="POST">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required><br><br>
+
+        <button type="submit">validate Email</button>
+    </form>
+
+    {% if valid is not none %}
+    <h3>Email validation result:</h3>
+    <p>{{ email }} is {{'valid' if valid else 'invalid'}}.</p>
+    {% endif %}
+
+</body>
+</html>
+
